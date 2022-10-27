@@ -1,0 +1,39 @@
+/* dica da tati: zerar margin e padding como padrãon */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+article {
+    display: flex;
+    flex-direction: column;     /* row é padrão */
+    justify-content: center;    /* alinha horizontalmente */
+    align-items: center;        /* alinha verticamente */
+    height: 100vh;              /* elemento ocupa 100% da altura da tela */
+}
+
+h1 {
+    margin: 20px 0;
+    font-size: 3rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+form > button {
+    margin-top: 20px;
+}
+
+.hide {
+    display: none;      /* também apaga para leitores de tela */
+}
+
+#gameScore p,
+label {
+    font-weight: bold;  /* negrito */
+    font-size: 1.5rem;
+}

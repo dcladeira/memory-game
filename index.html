@@ -19,5 +19,39 @@
 
     se todas as cartas forem viradas, o jogo terminou:
         avisar se jogador ganhou ou perdeu (outra página ou um alert)
-
  -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Jogo da Memória</title>
+ </head>
+ <body>
+    <article id="startScreen">
+        <h1>Jogo da Memória</h1>
+        <form>
+            <label>Qual é o seu nome?</label>
+            <input id="inputName" type="text" placeholder="Digite o seu nome">
+            <button id="btnStart">Jogar!</button>
+        </form>
+    </article>
+
+    <article id="gameScreen" class="hide">
+        <section id="gameScore">
+            <p>Olá, <span id="name">nome do jogador</span>!</p>
+            <p>Você tem <span id="points">XX</span> pontos.</p>
+        </section>
+        <section id="board"></section> <!-- onde vou posicionar as imagens -->
+    </article>
+
+
+    <!-- O link com os arquivos de script devem ser feitos aqui e nessa ordem, -->
+    <!-- pois a lógica vai ser usada no DOM e o DOM faz referência aos elementos HTML. -->
+    <script src="./js/logic.js"></script>   <!-- lógica (OPP) -->
+    <script src="./js/dom.js"></script>     <!-- DOM conversar com o HTML e o CSS -->
+ </body>
+ </html>
