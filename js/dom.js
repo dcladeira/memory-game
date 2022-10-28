@@ -6,6 +6,7 @@ const inputName = document.querySelector("#inputName")
 const btnStart = document.getElementById("btnStart")
 const gameScreen = document.querySelector("#gameScreen")
 const gameName = document.getElementById("name")  // name e username são palavras reservadas
+const points = document.getElementById("points")
 
 btnStart.addEventListener("click", (event) => {
     
@@ -16,14 +17,14 @@ btnStart.addEventListener("click", (event) => {
         // return
     }
 
-    match.renderDeck()
+    match.renderDeck();
 
-    startScreen.style.display = "none"      // .style para manipular CSS
-    gameScreen.style.display = "flex"
+    startScreen.style.display = "none";      // .style para manipular CSS
+    gameScreen.style.display = "flex";
+    match.userName = inputName.value;
+    gameName.innerText = match.userName;   /* passa o nome pra tag scan */
 
-    gameName.innerText = inputName.value    /* passa o nome pra tag scan */
-
-    settingUpGame()
+    settingUpGame();
 })
 
 function settingUpGame() {
@@ -35,6 +36,7 @@ function settingUpGame() {
             backCard.className = "hide backCard"
             frontCard.className = "show frontCard"
             match.flip(frontCard)
+            points.innerText = match.points;
         })
     })
 }

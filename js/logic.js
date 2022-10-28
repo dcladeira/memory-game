@@ -1,5 +1,7 @@
 class MemoryGame {
     constructor() {
+        this.userName = "";
+        this.points = 10;
         this.deck = [
             "../img/harmonia.svg",
             "../img/poder.svg",
@@ -24,12 +26,51 @@ class MemoryGame {
     }
     // chegar se as cartas selecionadas são iguais
     checkPair() {
-        if(this.cardSelected[0] === this.cardSelected[1]) {
-            console.log("As cartas são iguais :)") 
+        if(this.cardSelected[0].src === this.cardSelected[1].src) {
+            console.log("As cartas são iguais :)");
+            // classe turn identifica as cartas que vão permanecer viradas
+            this.cardSelected[0].classList.add("turn");
+            this.cardSelected[1].classList.add("turn");
+            this.checkStatus();
+            this.cardSelected = [];
         } else {
-            console.log("As cartas são diferentes :(")
+            console.log("As cartas são diferentes :(");
+            this.points -= 2;
+            setTimeout(()=>{
+                this.cardSelected[0].className = "hide frontCard";
+                this.cardSelected[1].className = "hide frontCard";
+                this.cardSelected[0].nextElementSibling.className = "show backCard";
+                this.cardSelected[1].nextElementSibling.className = "show backCard";
+                this.checkStatus();
+                this.cardSelected = [];
+
+            }, 1000);
         }
+        
     }
+     checkStatus() {
+        // Caso o jogador perca
+        if(this.points===0) {
+            let frontCard = document.querySelectorAll(".frontCard");
+            let backCard = document.querySelectorAll(".backCard");
+            frontCard.forEach((frontCard) => {
+                frontCard.className = "show";
+            });
+            backCard.forEach((backCard) => {
+                backCard.className = "hide";
+            });
+            console.log("Você perdeu :(");
+        }
+        // Caso o jogador ganhe
+        const turnCards = document.querySelectorAll(".turn");
+        if (turnCards.length === 8) {
+            let boardGame = document.getElementById("board");
+            let gameScore = document.getElementById("gameScore");
+            boardGame.style.display = "none";
+            gameScore.style.display = "none";
+            alert("Você ganhou :)");
+        }
+     }
 
     renderDeck() {
         // embaralhamento das cartas -> retorna o mesmo array, porém embaralhado
