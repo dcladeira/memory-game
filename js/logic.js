@@ -3,14 +3,14 @@ class MemoryGame {
         this.userName = "";
         this.points = 10;
         this.deck = [
-            "../img/harmonia.svg",
-            "../img/poder.svg",
-            "../img/projetar.svg",
-            "../img/refletir.svg",
-            "../img/harmonia.svg",
-            "../img/poder.svg",
-            "../img/projetar.svg",
-            "../img/refletir.svg",
+            "./img/harmonia.svg",
+            "./img/poder.svg",
+            "./img/projetar.svg",
+            "./img/refletir.svg",
+            "./img/harmonia.svg",
+            "./img/poder.svg",
+            "./img/projetar.svg",
+            "./img/refletir.svg",
         ];
         this.cardSelected = [];
     }
@@ -87,7 +87,7 @@ class MemoryGame {
             frontImg.classList.add("frontCard")
 
             let backImg = document.createElement("img")
-            backImg.src = "../img/fe.svg"
+            backImg.src = "./img/fe.svg"
             backImg.classList.add("show")
             backImg.classList.add("backCard")
 
